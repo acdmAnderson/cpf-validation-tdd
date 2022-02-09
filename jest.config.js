@@ -1,7 +1,7 @@
 module.exports = {
-    roots: ['<rootDir>/src'],
+    roots: ['<rootDir>/test'],
     collectCoverageFrom: [
-      '<rootDir>/src/**/*.js'
+      '<rootDir>/test/**/*.js'
     ],
     coverageDirectory: 'coverage',
     testEnvironment: 'node',
