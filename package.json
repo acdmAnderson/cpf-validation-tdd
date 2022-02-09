@@ -5,7 +5,7 @@
   "main": "cpf-validate.js",
   "scripts": {
     "start": "node cpf-validate.js",
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
