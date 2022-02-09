@@ -4,7 +4,7 @@
   "description": "",
   "main": "cpf-validate.js",
   "scripts": {
-    "start": "node cpf-validate.js",
+    "start": "node src/cpf-validate.js",
     "test": "jest"
   },
   "repository": {
