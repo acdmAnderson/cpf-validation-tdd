@@ -1,0 +1,23 @@
+{
+  "name": "cpf-validation-tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cpf-validate.js",
+  "scripts": {
+    "start": "node cpf-validate.js",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acdmAnderson/cpf-validation-tdd.git"
+  },
+  "author": "acdmAnderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acdmAnderson/cpf-validation-tdd/issues"
+  },
+  "homepage": "https://github.com/acdmAnderson/cpf-validation-tdd#readme",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
+}
