@@ -7,7 +7,7 @@ const hasOnlyEqualsCharacters = (cpf) => {
 }
 
 const cpfValidation = function validate(cpf) {
-    if(!cpf) return false;
+    if (!cpf) return false;
     if (!hasValidLength(cpf)) return false;
     cpf = cpf
         .replace('.', '')
