@@ -17,3 +17,8 @@ test('Should return false when CPF has more than 14 characters', () => {
     const invalidCPF = '000000000000000';
     expect(cpfValidation(invalidCPF)).toBe(false);
 })
+
+test('Should return false when CPF has all same characters', () => {
+    const invalidCPF = '00000000000';
+    expect(cpfValidation(invalidCPF)).toBe(false);
+})
