@@ -24,11 +24,11 @@ test('Should return false when CPF has all same characters', () => {
 })
 
 test('Should return true when CPF is valid', () => {
-    const invalidCPF = '11144477735';
-    expect(cpfValidation(invalidCPF)).toBe(true);
+    const validCPF = '11144477735';
+    expect(cpfValidation(validCPF)).toBe(true);
 })
 
 test('Should return true when CPF has valid special characters', () => {
-    const invalidCPF = '111.444.777-35';
-    expect(cpfValidation(invalidCPF)).toBe(true);
+    const validCPF = '111.444.777-35';
+    expect(cpfValidation(validCPF)).toBe(true);
 })

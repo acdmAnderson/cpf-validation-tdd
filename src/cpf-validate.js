@@ -42,14 +42,14 @@ const hasVerifierDigitValid = (cpf, verifier) => {
     return getVerifierDigit(cpf) === verifier;
 }
 
+const getOnlyDigits = (cpf) => {
+    return cpf.replace(/\D/g, '');    
+}
+
 const cpfValidation = function validate(cpf) {
     if (!cpf) return false;
     if (!hasValidLength(cpf)) return false;
-    cpf = cpf
-        .replace('.', '')
-        .replace('.', '')
-        .replace('-', '')
-        .replace(" ", "");
+    cpf = getOnlyDigits(cpf)
     if (hasOnlyEqualsCharacters(cpf)) return false;
     try {
         const firstVerifier = calculateFirstVerifier(cpf)
