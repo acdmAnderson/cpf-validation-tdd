@@ -3,7 +3,43 @@ const hasValidLength = (cpf) => {
 }
 
 const hasOnlyEqualsCharacters = (cpf) => {
-    return cpf.split('').every(char => char === cpf.charAt(0))
+    return cpf.split('').every(char => char === cpf.charAt(0));
+}
+
+const calculateRest = (amount) => {
+    return amount % 11;
+}
+
+const calculateVerifier = (rest) => {
+    return (rest < 2) ? 0 : 11 - rest;
+}
+
+const calculateAmount = (cpf, position) => {
+    let verifierAmount = 0;
+    for (let index = 1; index < cpf.length - 1; index++) {
+        const digit = +cpf.charAt(index - 1);
+        verifierAmount = verifierAmount + (position - index) * digit;
+    };
+    return verifierAmount
+}
+
+const calculateFirstVerifier = (cpf) => {
+    const firstVerifierAmount = calculateAmount(cpf, 11);
+    return calculateVerifier(calculateRest(firstVerifierAmount)).toString();
+}
+
+const calculateSecondVerifier = (cpf, firstVerifier) => {
+    let secondVerifierAmount = calculateAmount(cpf, 12);
+    secondVerifierAmount += 2 * firstVerifier;
+    return calculateVerifier(calculateRest(secondVerifierAmount)).toString();
+}
+
+const getVerifierDigit = (cpf) => {
+    return cpf.substring(cpf.length - 2, cpf.length)
+}
+
+const hasVerifierDigitValid = (cpf, verifier) => {
+    return getVerifierDigit(cpf) === verifier;
 }
 
 const cpfValidation = function validate(cpf) {
@@ -16,26 +52,9 @@ const cpfValidation = function validate(cpf) {
         .replace(" ", "");
     if (hasOnlyEqualsCharacters(cpf)) return false;
     try {
-        let d1, d2;
-        let dg1, dg2, rest;
-        let digito;
-        let nDigResult;
-        d1 = d2 = 0;
-        dg1 = dg2 = rest = 0;
-        for (let nCount = 1; nCount < cpf.length - 1; nCount++) {
-            digito = parseInt(cpf.substring(nCount - 1, nCount));
-            d1 = d1 + (11 - nCount) * digito;
-            d2 = d2 + (12 - nCount) * digito;
-        };
-        rest = (d1 % 11);
-        dg1 = (rest < 2) ? dg1 = 0 : 11 - rest;
-        d2 += 2 * dg1;
-        rest = (d2 % 11);
-        if (rest < 2) dg2 = 0;
-        else dg2 = 11 - rest;
-        let nDigVerific = cpf.substring(cpf.length - 2, cpf.length);
-        nDigResult = "" + dg1 + "" + dg2;
-        return nDigVerific == nDigResult;
+        const firstVerifier = calculateFirstVerifier(cpf)
+        const secondVerifier = calculateSecondVerifier(cpf, firstVerifier)
+        return hasVerifierDigitValid(cpf, firstVerifier.concat(secondVerifier))
     } catch (e) {
         console.error("Erro !" + e);
         return false;
