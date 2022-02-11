@@ -32,3 +32,8 @@ test('Should return true when CPF has valid special characters', () => {
     const validCPF = '111.444.777-35';
     expect(cpfValidation(validCPF)).toBe(true);
 })
+
+test('Should return false when CPF has only first digit valid', () => {
+    const invalidCPF = '111.444.777-30';
+    expect(cpfValidation(invalidCPF)).toBe(false);
+})
