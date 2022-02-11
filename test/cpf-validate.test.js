@@ -37,3 +37,8 @@ test('Should return false when CPF has only first digit valid', () => {
     const invalidCPF = '111.444.777-30';
     expect(cpfValidation(invalidCPF)).toBe(false);
 })
+
+test('Should return false when CPF has only second digit valid', () => {
+    const invalidCPF = '111.444.777-05';
+    expect(cpfValidation(invalidCPF)).toBe(false);
+})
