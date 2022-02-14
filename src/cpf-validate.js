@@ -1,3 +1,5 @@
+const { StringHelper } = require('./helpers/string.helper')
+
 const CPF_LENGTH = 11;
 
 const MAX_CPF_LENGTH = 14;
@@ -9,21 +11,13 @@ const SECOND_VERIFIER_POSITION = 12;
 const cpfValidation = function validate(cpf) {
     if (!cpf) return false;
     if (!hasValidLength(cpf)) return false;
-    cpf = getOnlyDigits(cpf)
-    if (hasAllSameCharacters(cpf)) return false;
+    cpf = StringHelper.getOnlyDigits(cpf)
+    if (StringHelper.hasAllSameCharacters(cpf)) return false;
     return verifyCPF(cpf)
 }
 
 const hasValidLength = (cpf) => {
     return cpf.length >= CPF_LENGTH || cpf.length <= MAX_CPF_LENGTH;
-}
-
-const getOnlyDigits = (cpf) => {
-    return cpf.replace(/\D/g, '');
-}
-
-const hasAllSameCharacters = (cpf) => {
-    return cpf.split('').every(char => char === cpf.charAt(0));
 }
 
 const verifyCPF = (cpf) => {
