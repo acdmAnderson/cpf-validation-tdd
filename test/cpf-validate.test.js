@@ -71,3 +71,10 @@ test('Should call StringHelper.getOnlyDigits with correct params', () => {
     cpfValidation(validCPF)
     expect(getOnlyDigitsSpy).toHaveBeenCalledWith(validCPF)
 })
+
+test('Should call StringHelper.hasAllSameCharacters with correct params', () => {
+    const validCPF = '49329023010';
+    const hasAllSameCharactersSpy = jest.spyOn(StringHelper, 'hasAllSameCharacters')
+    cpfValidation(validCPF)
+    expect(hasAllSameCharactersSpy).toHaveBeenCalledWith(validCPF)
+})
