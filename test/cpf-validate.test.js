@@ -1,4 +1,5 @@
 const { cpfValidation } = require('../src/cpf-validate')
+const { StringHelper } = require('../src/helpers/string.helper')
 
 test('Should return false when CPF is null', () => {
     expect(cpfValidation(null)).toBe(false);
@@ -62,4 +63,11 @@ test('Should return false when CPF has only second digit valid', () => {
 test('Should return false when CPF has only special characters', () => {
     const invalidCPF = '!@#$%ˆ&*()*__';
     expect(cpfValidation(invalidCPF)).toBe(false);
+})
+
+test('Should call StringHelper.getOnlyDigits with correct params', () => {
+    const validCPF = '493.290.230-10';
+    const getOnlyDigitsSpy = jest.spyOn(StringHelper, 'getOnlyDigits')
+    cpfValidation(validCPF)
+    expect(getOnlyDigitsSpy).toHaveBeenCalledWith(validCPF)
 })
