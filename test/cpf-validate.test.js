@@ -58,3 +58,8 @@ test('Should return false when CPF has only second digit valid', () => {
     const invalidCPF = '111.444.777-05';
     expect(cpfValidation(invalidCPF)).toBe(false);
 })
+
+test('Should return false when CPF has only special characters', () => {
+    const invalidCPF = '!@#$%ˆ&*()*__';
+    expect(cpfValidation(invalidCPF)).toBe(false);
+})
