@@ -29,7 +29,7 @@ test('Should return true when CPF is valid', () => {
 })
 
 test('Should return true when CPF has valid special characters', () => {
-    const validCPF = '111.444.777-35';
+    const validCPF = '493.290.230-10';
     expect(cpfValidation(validCPF)).toBe(true);
 })
 
