@@ -1,10 +1,11 @@
 const EMPTY = '';
 
 const hasAllSameCharacters = (stringValue) => {
-    return stringValue.split(EMPTY).every(char => char === stringValue.charAt(0));
+    const [firstChar] = stringValue;
+    return [...stringValue].every(char => char === firstChar);
 }
 const getOnlyDigits = (stringValue) => {
-    return stringValue.replace(/\D/g, EMPTY);
+    return stringValue.replace(/[.-]/g, EMPTY);
 }
 
 const StringHelper = {
